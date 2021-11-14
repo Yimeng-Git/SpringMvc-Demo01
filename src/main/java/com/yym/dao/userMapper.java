@@ -11,4 +11,6 @@ public interface userMapper {
     User fandByuser(User user);
 
     List<User> fandByIds(List<Long> list);
+
+    public void logout();
 }
