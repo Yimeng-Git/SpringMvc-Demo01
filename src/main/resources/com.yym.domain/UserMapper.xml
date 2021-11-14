@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yym.dao.userMapper">
+    <sql id="userfand"> select *
+                        from sys_user</sql>
+    <select id="fandByuser" resultType="user" parameterType="user">
+        <include refid="userfand"></include>
+        <where>
+            <if test="username!=null">
+                and username=#{username}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+        </where>
+    </select>
+    <select id="fandAll" resultType="user">
+        <include refid="userfand"></include>
+    </select>
+    <select id="fandByIds" resultType="user" parameterType="list">
+        <include refid="userfand"/>
+        <where>
+            <foreach collection="list" open="id in (" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+</mapper>
