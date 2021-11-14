@@ -12,5 +12,9 @@ public interface userMapper {
 
     List<User> fandByIds(List<Long> list);
 
+
     public void logout();
+
+    public String login(String username,String password);
+
 }
